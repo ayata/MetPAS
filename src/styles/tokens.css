@@ -1,0 +1,111 @@
+:root {
+  /* ===== MetLife official palette (do not add alternative brand colors) ===== */
+  --metlife-blue: #0090da;       /* primary buttons, key interactive elements */
+  --metlife-dark-blue: #0061a0;  /* sidebar, navigation, selected headings, text links */
+  --metlife-green: #a4ce4e;      /* positive indicators, subtle accents — sparingly */
+  --white: #ffffff;
+  --light-gray: #f2f2f2;
+  --gray: #d9d9d6;
+  --medium-gray: #a7a8aa;
+  --dark-gray: #75787b;
+
+  /* Tints are MetLife Blue / Green mixed with white — not new colors */
+  --blue-tint-05: #f2f9fd;       /* 5% MetLife Blue */
+  --blue-tint-10: #e6f4fb;       /* 10% MetLife Blue */
+  --blue-tint-20: #cce9f8;       /* 20% MetLife Blue */
+  --green-tint-20: #edf5dc;      /* 20% MetLife Green */
+
+  /* ===== Semantic aliases used by components ===== */
+  --blue-700: var(--metlife-dark-blue);
+  --blue-600: var(--metlife-dark-blue);
+  --blue-500: var(--metlife-blue);
+  --blue-400: var(--metlife-blue);
+  --blue-100: var(--blue-tint-10);
+  --blue-50: var(--blue-tint-05);
+  --navy-950: var(--metlife-dark-blue);
+  --navy-900: var(--metlife-dark-blue);
+  --navy-800: var(--metlife-dark-blue);
+  --navy-700: var(--metlife-dark-blue);
+  --sidebar-bg: var(--metlife-dark-blue);
+  --nav-active-bg: var(--blue-tint-10);
+
+  /* Surfaces */
+  --page-bg: #f4f7fa;            /* page background (Phase 2 spec) */
+  --bg: var(--page-bg);
+  --surface: var(--white);
+  --surface-2: var(--page-bg);
+  --hover: var(--blue-tint-10);
+  --hover-strong: var(--blue-tint-20);
+  --hover-accent: var(--metlife-blue);
+
+  /* Borders & separators */
+  --border: #e3e8ed;             /* subtle border (Phase 2 spec) */
+  --border-subtle: #edf1f4;      /* lighter tint of the border */
+  --border-strong: var(--medium-gray);
+  --border-emphasis: var(--metlife-blue);
+
+  /* Text */
+  --text: #263238;               /* primary text (Phase 2 spec) */
+  --text-2: var(--dark-gray);
+  --text-3: var(--dark-gray);
+  --text-disabled: var(--medium-gray);
+  --link: var(--metlife-dark-blue); /* small text links use dark blue for AA contrast */
+
+  /* Functional status (never the only signal — always icon + label) */
+  --success: #263238;
+  --success-bg: var(--green-tint-20);
+  --success-dot: var(--metlife-green);
+  --warning: #8a5a00;
+  --warning-bg: #fdf3e1;
+  --warning-dot: #d98a0b;
+  --critical: #b42318;
+  --critical-bg: #fdecea;
+  --info: var(--metlife-dark-blue);
+  --info-bg: var(--blue-tint-10);
+  --neutral-bg: var(--light-gray);
+
+  /* Tiers — intensity of brand blue distinguishes them */
+  --t1-bg: var(--metlife-dark-blue);
+  --t1-fg: var(--white);
+  --t2-bg: var(--blue-tint-10);
+  --t2-fg: var(--metlife-dark-blue);
+  --t3-bg: var(--white);
+  --t3-fg: var(--dark-gray);
+
+  /* Charts: brand blue for open work, neutral gray for completed (legend + direct labels) */
+  --chart-1: var(--medium-gray);
+  --chart-2: var(--metlife-blue);
+  --chart-line: var(--metlife-dark-blue);
+
+  /* Type */
+  --font: 'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fs-xs: 11.5px;
+  --fs-sm: 12.5px;
+  --fs-md: 13.5px;
+  --fs-base: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 20px;
+  --fs-2xl: 24px;
+
+  /* Space (4px grid) */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s8: 32px;
+
+  --radius-sm: 8px;
+  --radius: 10px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 2px rgba(43, 43, 43, 0.04);
+  --shadow: 0 1px 2px rgba(43, 43, 43, 0.05);
+  --shadow-lg: 0 8px 24px rgba(43, 43, 43, 0.10), 0 1px 3px rgba(43, 43, 43, 0.06);
+  --focus: 0 0 0 3px rgba(0, 144, 218, 0.35);
+
+  --header-h: 56px;
+  --sidebar-w: 276px;
+  --sidebar-w-collapsed: 68px;
+  --control-h: 40px;
+}

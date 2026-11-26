@@ -1,0 +1,200 @@
+/* =====================================================================
+   Dashboard design pass (2026-11-11)
+   Hero focus card · indicator cards · alerts · depth & spacing · motion
+   Loaded last; official MetLife colours and their tints only.
+   ===================================================================== */
+
+/* ---------- Depth & spacing ---------- */
+.page.dash { gap: 24px; }
+/* Hero card top lines up with the sidebar's Dashboard item (header 56px + nav 8px). */
+@media (min-width: 641px) { .page.dash { padding-top: 8px; } }
+.dash .stat-cards { gap: 24px; }
+.dash .dash-grid, .dash .dash-grid.calm { gap: 24px; }
+.dash .side-stack { gap: 24px; }
+
+.dash .panel,
+.dash .stat-card,
+.hero-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 6px 16px -6px rgba(16, 24, 40, .07);
+}
+.dash .panel { overflow: hidden; }
+
+/* ---------- Hero card ---------- */
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 28px 22px;
+  border-radius: 16px;
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(0, 144, 218, .09) 0%, rgba(0, 144, 218, 0) 52%),
+    radial-gradient(60% 120% at 0% 100%, rgba(0, 97, 160, .04) 0%, rgba(0, 97, 160, 0) 60%),
+    var(--surface);
+}
+.hero-card::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, var(--metlife-dark-blue), var(--metlife-blue)); }
+.hero-main { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.hero-card .hero-date { display: block; font-size: 11.5px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: #5b5e61; margin-bottom: 6px; }
+.hero-card h1 { margin: 0; line-height: 1.25; }
+.hero-card .hero-text p { margin: 4px 0 0; color: #5b5e61; font-size: var(--fs-md); }
+.hero-card .hero-btn { box-shadow: 0 1px 2px rgba(16, 24, 40, .05); }
+
+/* Focus line: the single most useful next step */
+.hero-focus {
+  margin-top: 20px;
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 12px 12px 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-size: var(--fs-base);
+  color: var(--text);
+}
+.hero-focus.critical { background: var(--critical-bg); border-color: rgba(200, 40, 40, .16); --hf: var(--critical); }
+.hero-focus.warning  { background: var(--warning-bg);  border-color: rgba(217, 138, 11, .22); --hf: var(--warning); }
+.hero-focus.calm     { background: var(--blue-tint-05, #f2f9fd); border-color: rgba(0, 144, 218, .16); --hf: var(--metlife-dark-blue); }
+.hf-icon { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: #fff; color: var(--hf); box-shadow: 0 1px 2px rgba(16, 24, 40, .06); }
+.hf-text { flex: 1; min-width: 0; line-height: 1.45; }
+.hf-text strong { font-weight: 650; }
+.hero-focus.critical .hf-text > strong:first-child { color: var(--critical); }
+.hero-focus.warning .hf-text > strong:first-child { color: var(--warning); }
+.hf-ref { display: inline-block; margin-left: 4px; padding: 1px 8px; border-radius: 999px; background: rgba(255, 255, 255, .85); border: 1px solid var(--border); font-size: var(--fs-sm); font-weight: 500; color: var(--text-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.hf-btn {
+  flex: none; display: inline-flex; align-items: center; gap: 8px;
+  height: 38px; padding: 0 16px; border-radius: 10px;
+  border: 1px solid var(--hf); background: #fff; color: var(--hf);
+  font: inherit; font-size: var(--fs-md); font-weight: 650; cursor: pointer;
+  transition: background-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.hf-btn svg { transition: transform .16s ease; }
+.hf-btn:hover { background: var(--hf); color: #fff; box-shadow: 0 4px 12px -4px rgba(16, 24, 40, .25); }
+.hf-btn:hover svg { transform: translateX(2px); }
+.hf-btn:focus-visible { outline: 2px solid var(--metlife-blue); outline-offset: 2px; }
+
+/* ---------- Indicator cards ---------- */
+.dash .stat-card.sc2 {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: stretch; gap: 6px;
+  padding: 18px 20px 22px 20px;
+  text-align: left;
+  background: var(--surface);
+}
+.dash .stat-card.sc2:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(16, 24, 40, .05), 0 14px 28px -12px rgba(0, 97, 160, .28); }
+.sc2-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.sc2-label { font-size: var(--fs-md); font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sc2-icon { flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--blue-tint-10); color: var(--metlife-blue); }
+.sc2-icon svg { width: 17px; height: 17px; }
+.stat-card.warning  .sc2-icon { background: var(--warning-bg); color: var(--warning); }
+.stat-card.critical .sc2-icon { background: var(--critical-bg); color: var(--critical); }
+.stat-card.info     .sc2-icon { background: var(--blue-tint-10); color: var(--metlife-dark-blue); }
+.stat-card.success  .sc2-icon { background: var(--green-tint-20); color: var(--metlife-dark-blue); }
+
+.sc2-value { font-size: 36px; font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; color: var(--text); font-variant-numeric: tabular-nums; }
+.stat-card.warning  .sc2-value { color: var(--warning); }
+.stat-card.critical .sc2-value { color: var(--critical); }
+
+.sc2-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 18px; }
+.sc2-hint { font-size: var(--fs-sm); color: var(--dark-gray); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sc2-go { flex: none; display: inline-flex; align-items: center; gap: 4px; font-size: var(--fs-sm); font-weight: 650; color: var(--sc-accent, var(--metlife-blue)); opacity: 0; transform: translateX(-4px); transition: opacity .16s ease, transform .16s ease; }
+.stat-card.sc2:hover .sc2-go, .stat-card.sc2:focus-visible .sc2-go { opacity: 1; transform: none; }
+
+/* ---------- Alerts & Exceptions ---------- */
+.al-desc-critical { color: var(--critical); font-weight: 600; }
+.al-list { display: flex; flex-direction: column; }
+.al-row {
+  display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: 14px; align-items: start;
+  width: 100%; padding: 14px 20px; text-align: left; cursor: pointer;
+  background: none; border: 0; border-top: 1px solid var(--border-subtle);
+  font: inherit; color: inherit;
+  transition: background-color .16s ease;
+}
+.al-row:first-child { border-top: 0; }
+.al-row:hover, .al-row:focus-visible { background: var(--blue-tint-10); }
+.al-row:focus-visible { outline: 2px solid var(--metlife-blue); outline-offset: -2px; }
+.al-dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; background: var(--metlife-blue); }
+.al-row.sev-critical .al-dot { background: var(--critical); box-shadow: 0 0 0 4px rgba(200, 40, 40, .12); }
+.al-row.sev-warning .al-dot { background: var(--warning-dot); box-shadow: 0 0 0 4px rgba(217, 138, 11, .14); }
+.al-row.sev-info .al-dot { background: var(--metlife-blue); box-shadow: 0 0 0 4px rgba(0, 144, 218, .12); }
+.al-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.al-title {
+  font-size: var(--fs-md); font-weight: 600; line-height: 1.4; color: var(--text);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.al-row:hover .al-title { color: var(--metlife-dark-blue); }
+.al-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-size: var(--fs-sm); color: var(--dark-gray); }
+.al-module { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.al-time { flex: none; font-variant-numeric: tabular-nums; }
+
+/* ---------- Motion: gentle entrance on login ---------- */
+@keyframes dash-in { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+.dash-enter { animation: dash-in .5s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 70ms); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-enter { animation: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero-card { padding: 20px; }
+  .hero-focus { flex-wrap: wrap; }
+  .hf-btn { margin-left: 48px; }
+}
+
+/* Keep each card's coloured left accent (the shared border rule above would otherwise reset it). */
+.dash .stat-card.sc2 { border-left: 4px solid var(--sc-accent, var(--metlife-blue)); }
+
+/* ===================== Pass 2 (2026-11-11) ===================== */
+
+/* 2. "View all" links as subtle pill buttons */
+.link-pill {
+  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  height: 30px; padding: 0 12px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface);
+  font-size: var(--fs-sm); font-weight: 600; color: var(--metlife-dark-blue); text-decoration: none; white-space: nowrap;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease;
+}
+.link-pill svg { transition: transform .16s ease; }
+.link-pill:hover { background: var(--blue-tint-10); border-color: var(--metlife-blue); color: var(--metlife-dark-blue); text-decoration: none; }
+.link-pill:hover svg { transform: translateX(2px); }
+.link-pill:focus-visible { outline: 2px solid var(--metlife-blue); outline-offset: 2px; }
+
+/* 3. Demo chip: quiet neutral outline instead of amber */
+.topbar .demo-pill, header .demo-pill, .app-header .demo-pill {
+  background: transparent; border: 1px solid var(--border); color: var(--dark-gray); font-weight: 500;
+}
+.topbar .demo-pill i, header .demo-pill i, .app-header .demo-pill i { background: var(--medium-gray); }
+
+/* 4. Greeting: 28px semibold, dark text, first name in MetLife Blue */
+.hero-card h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.028em; color: var(--text); }
+.hero-card h1 .hero-name { color: var(--metlife-blue); }
+
+/* 5. Quiet footer strip */
+.dash-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: 14px 4px 4px; margin-top: 4px;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-sm); color: var(--dark-gray);
+}
+.dash-foot a { font-weight: 600; color: var(--metlife-dark-blue); }
+.dash-foot a:hover { color: var(--metlife-blue); }
+
+.dash .stat-card.sc2 { padding-bottom: 18px; }
+.dash .stat-card.sc2 { min-height: 0; }
+
+/* ============ Module-page indicator cards (2026-11-13) ============ */
+/* Same card as the dashboard indicators, used by KpiRow on every module page. */
+.kpi-cards { gap: 16px; }
+.stat-card.sc2.kpi-card {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: stretch; gap: 4px;
+  padding: 14px 18px 12px 18px;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--sc-accent, var(--metlife-blue));
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 6px 16px -6px rgba(16, 24, 40, .07);
+}
+.stat-card.sc2.kpi-card:hover:not(:disabled) { transform: translateY(-2px); border-color: var(--sc-accent); box-shadow: 0 2px 4px rgba(16, 24, 40, .05), 0 14px 28px -12px rgba(0, 97, 160, .28); }
+.stat-card.sc2.kpi-card .sc2-value { font-size: 30px; margin-top: 0; }
+.stat-card.sc2.kpi-card .kpi-sub-line { font-size: var(--fs-xs); }
+.stat-card.sc2.kpi-card .sc2-foot { margin-top: 0; min-height: 16px; }
