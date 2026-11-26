@@ -42,14 +42,27 @@ git pull https://github.com/ayata/MetPAS.git dev
 
 ### Install and run
 
+Copy the environment template if you do not already have a `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+The development URL is assembled from these variables:
+
+```env
+VITE_DEV_HOST=http://localhost
+VITE_DEV_PORT=5173
+```
+
 ```bash
 npm install
-npm run dev        # http://localhost:5173
+npm run dev        # runs at VITE_DEV_HOST:VITE_DEV_PORT
 ```
 
 | Script | Description |
 |---|---|
-| `npm run dev` | Start the Vite dev server on port 5173 |
+| `npm run dev` | Start the Vite dev server using `VITE_DEV_HOST` and `VITE_DEV_PORT` |
 | `npm run build` | Type-check (`tsc -b`) and build to `dist/` |
 | `npm run preview` | Serve the production build locally |
 
