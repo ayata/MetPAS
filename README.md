@@ -22,15 +22,6 @@ React 18 · TypeScript · Vite · React Router 7 · lucide-react · Inter (varia
 
 Prerequisites: [Node.js](https://nodejs.org/) 18+, npm and [Git](https://git-scm.com/).
 
-### Fork and clone
-
-1. Clone your fork 
-
-   ```bash
-   git clone https://github.com/ayata/MetPAS.git
-   cd MetPAS
-   ```
-
 ### Install and run
 
 ```bash
